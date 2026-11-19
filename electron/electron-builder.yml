@@ -1,0 +1,55 @@
+appId: com.menuiserie.pointage
+productName: ALL Menuiserie
+copyright: Copyright © 2025 ALL Menuiserie
+
+directories:
+  output: dist-electron
+  buildResources: build
+
+# App files — only the Electron shell itself
+files:
+  - main.js
+  - package.json
+
+# Shared extra resources (both platforms)
+extraResources:
+  - from: ../backend/target/pointage-backend.jar
+    to: backend.jar
+  - from: ../frontend/dist
+    to: app
+
+# ── macOS ────────────────────────────────────────────────────────────────────
+mac:
+  category: public.app-category.business
+  identity: null          # skip code-signing (app will require manual Gatekeeper bypass)
+  target:
+    - target: dmg
+      arch: [arm64]       # Apple Silicon — change to [x64] for Intel Mac
+  icon: build/icon.icns
+  extraResources:
+    - from: jre-mac/      # populated by build-mac.sh
+      to: jre/
+
+dmg:
+  title: ALL Menuiserie ${version}
+  window:
+    width: 540
+    height: 380
+
+# ── Windows ──────────────────────────────────────────────────────────────────
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: ALL Menuiserie
+
+# portable target (no Wine required — used when building Windows from macOS without Wine)
+portable:
+  artifactName: ALL-Menuiserie-Setup-${version}.exe

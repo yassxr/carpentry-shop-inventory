@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+backend/target/
+electron/dist-electron/
+
+# Bundled JREs (downloaded by build scripts)
+electron/jre-mac/
+electron/jre-win/
+electron/jre/
+
+# Local data / logs
+data/
+*.log
+
+# Editor / local tool settings
+.idea/
+.vscode/
+.claude/
+
+# User guide (kept local only)
+ALL_Menuiserie_Guide_Utilisateur.pdf

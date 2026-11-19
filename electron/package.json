@@ -1,0 +1,16 @@
+{
+  "name": "all-menuiserie",
+  "version": "1.0.0",
+  "description": "ALL Menuiserie — Gestion de Pointage",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:win-portable": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3"
+  }
+}
